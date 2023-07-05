@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -52,7 +52,7 @@ app.post('/compose',function(req,res){
 // express parameter routing (access passed path)
 
 app.get('/posts/:something',function(req,res){
-  console.log(req.params.something);          //params the 's' is important
+  console.log(req.params.something);          
 
   let param = _.lowerCase(req.params.something);
   
@@ -70,7 +70,6 @@ app.get('/posts/:something',function(req,res){
 
 
 
-app.listen(3000, function() {
+app.listen(process.env.PORT||3000, function() {
   console.log("Server started on port 3000");
-  // console.log(_.lowerCase('FOo-bar---BAAA'));
 });
